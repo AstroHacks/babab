@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #e38c08;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 150px rgb(255, 254, 254);
+}
+
+h1 {
+    text-align: center;
+}
+
+.video-player {
+    overflow: hidden; /* or visible, depending on your layout */
+}
+
+
+video {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Prevent overflow */
+}
+
+
+.video-list {
+    margin-top: 20px;
+}
+
+.video-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.video-list li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #fe0000;
+}
+
+.video-list li:hover {
+    background-color: #fbb833;
+    border-radius: 100px;
+}

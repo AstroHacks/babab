@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperNovae</title>
+    <link rel="stylesheet" href="treasure.css">
+</head>
+<body>
+    <div class="container" id="videoContainer"> <!-- Added id here -->
+        <h1>CaT Hub</h1>
+        <h4>Quality: 240p | Storage: Firebase | &copy; 2024 Copyright HyperNovae Technologies Corp. All Rights Reserved</h4>
+        <div class="video-player">
+            <video id="video" controls>
+                <source id="videoSource" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="video-list">
+            <h2>Videos</h2>
+            <ul>
+                <li onclick="changeVideo('vid/idk.mp4')">Candy Love</li>
+                <li onclick="changeVideo('vid/idk1.mp4')">Asian</li>
+                <li onclick="changeVideo('vid/idk2.mp4')">Fantasy Babe</li>
+                <li onclick="changeVideo('vid/idk3.mp4')">Estate</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs v8 -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <script>
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCs6n1V-UM8zki3RD2YMvbLGPOlmmoEbxo",
+            authDomain: "cathub-3aaa7.firebaseapp.com",
+            projectId: "cathub-3aaa7",
+            storageBucket: "cathub-3aaa7.appspot.com",
+            messagingSenderId: "826084517818",
+            appId: "1:826084517818:web:9cb284ee870c1741f39f83",
+            measurementId: "G-EQPVZXTZB1"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const storage = firebase.storage();
+
+        // Function to change video
+        function changeVideo(filePath) {
+            const storageRef = storage.ref(filePath);
+            storageRef.getDownloadURL().then((url) => {
+                const videoElement = document.getElementById('video');
+                const videoSource = document.getElementById('videoSource');
+                videoSource.src = url;  // Set the video source to the download URL
+                videoElement.load();      // Load the new video
+            }).catch((error) => {
+                console.error('Error fetching video file:', error);
+            });
+        }
+
+        // Initially load the first video
+        changeVideo('vid/idk.mp4');  // Ensure the initial video is also using the correct path
+
+        // Add event listener to the document
+        document.addEventListener('click', function(event) {
+            // Get the video container
+            const container = document.getElementById('videoContainer');
+            
+            // Check if the clicked target is outside the video container
+            if (!container.contains(event.target)) {
+                // Redirect to another page
+                window.location.href = 'https://www.pornhub.com'; // Change this URL to your desired redirect location
+            }
+        });
+    </script>
+</body>
+</html>
